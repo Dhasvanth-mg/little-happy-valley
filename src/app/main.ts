@@ -35,6 +35,7 @@ function start() {
   const pressed = (key: string, arrow: string) => Number(keys.has(key) || keys.has(arrow));
   let position = proofBlock.spawn;
   let previousTime = performance.now();
+  const startTime = previousTime;
 
   function frame(time: number) {
     const right = pressed('KeyD', 'ArrowRight') - pressed('KeyA', 'ArrowLeft');
@@ -46,7 +47,7 @@ function start() {
     previousTime = time;
     const label = `X ${position.x.toFixed(1)} m · Z ${position.z.toFixed(1)} m`;
     if (coordinates.textContent !== label) coordinates.textContent = label;
-    scene.render(position);
+    scene.render(position, (time - startTime) / 1000);
     requestAnimationFrame(frame);
   }
 

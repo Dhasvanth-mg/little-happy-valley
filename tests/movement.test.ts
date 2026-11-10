@@ -1,11 +1,19 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { daylightAt } from '../src/game/simulation/daylight.ts';
 import { walk, PLAYER_RADIUS } from '../src/game/player/movement.ts';
 import { proofBlock } from '../src/game/world/proofBlock.ts';
 
 const bounds = { minX: -10, maxX: 10, minZ: -10, maxZ: 10 };
 const wall = { minX: 1, maxX: 3, minZ: -2, maxZ: 2 };
 const origin = { x: 0, z: 0 };
+
+test('daylight fades into night and repeats every three minutes', () => {
+  assert.equal(daylightAt(0), 1);
+  assert.ok(daylightAt(30) > 0 && daylightAt(30) < 1);
+  assert.equal(daylightAt(90), 0);
+  assert.equal(daylightAt(180), 1);
+});
 
 test('normalizes diagonal movement and scales by elapsed time', () => {
   const straight = walk(origin, { x: 1, z: 0 }, 0.1, bounds, []);

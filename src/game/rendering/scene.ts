@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import type { Bounds, Point } from '../player/movement.ts';
 import { proofBlock } from '../world/proofBlock.ts';
+import { daylightAt } from '../simulation/daylight.ts';
 
 const CAMERA_OFFSET = new THREE.Vector3(30, 30, 30);
 const VIEW_HEIGHT = 48;
@@ -8,12 +9,16 @@ const VIEW_HEIGHT = 48;
 export function createScene(canvas: HTMLCanvasElement) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: false });
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x293944);
+  const sky = new THREE.Color();
+  const nightSky = new THREE.Color(0x10162e);
+  const daySky = new THREE.Color(0x293944);
+  scene.background = sky;
   const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 180);
 
   const sunlight = new THREE.DirectionalLight(0xffe2bd, 2);
   sunlight.position.set(-20, 40, 10);
-  scene.add(sunlight, new THREE.HemisphereLight(0xe5f3ff, 0x706452, 1.9));
+  const ambient = new THREE.HemisphereLight(0xe5f3ff, 0x706452, 1.9);
+  scene.add(sunlight, ambient);
 
   function addBox(bounds: Bounds, height: number, color: number) {
     const mesh = new THREE.Mesh(
@@ -47,7 +52,11 @@ export function createScene(canvas: HTMLCanvasElement) {
     renderer.setSize(width, 360, false);
   }
 
-  function render(position: Point) {
+  function render(position: Point, elapsedSeconds: number) {
+    const daylight = daylightAt(elapsedSeconds);
+    sky.copy(nightSky).lerp(daySky, daylight);
+    sunlight.intensity = 2 * daylight;
+    ambient.intensity = 0.4 + 1.5 * daylight;
     avatar.position.set(position.x, 0.93, position.z);
     camera.position.set(position.x, 0, position.z).add(CAMERA_OFFSET);
     camera.lookAt(position.x, 0, position.z);
