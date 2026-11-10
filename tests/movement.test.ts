@@ -26,6 +26,12 @@ test('limits long frames and stays inside world bounds', () => {
   assert.equal(walk({ x: 9.5, z: 0 }, { x: 1, z: 0 }, 0.1, bounds, []).x, 10 - PLAYER_RADIUS);
 });
 
+test('sprint increases speed while respecting building collision', () => {
+  const input = { x: 1, z: 0 };
+  assert.equal(walk(origin, input, 0.1, bounds, [], true).x, 0.8);
+  assert.equal(walk(origin, input, 0.1, bounds, [wall], true).x, 1 - PLAYER_RADIUS);
+});
+
 test('synthetic spawn is inside the block and clear of all buildings', () => {
   const { spawn, bounds, buildings } = proofBlock;
   assert.ok(spawn.x > bounds.minX + PLAYER_RADIUS && spawn.x < bounds.maxX - PLAYER_RADIUS);

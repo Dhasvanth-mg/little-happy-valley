@@ -54,5 +54,10 @@ export function createScene(canvas: HTMLCanvasElement) {
     renderer.render(scene, camera);
   }
 
-  return { resize, render };
+  function zoom(delta: number) {
+    camera.zoom = THREE.MathUtils.clamp(camera.zoom * Math.exp(-delta * 0.001), 0.65, 2.5);
+    camera.updateProjectionMatrix();
+  }
+
+  return { resize, render, zoom };
 }

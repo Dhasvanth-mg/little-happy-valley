@@ -20,11 +20,12 @@ export function walk(
   seconds: number,
   bounds: Bounds,
   obstacles: readonly Bounds[],
+  sprinting = false,
 ): Point {
   const magnitude = Math.hypot(input.x, input.z);
   if (magnitude === 0 || seconds <= 0) return position;
 
-  const distance = SPEED * Math.min(seconds, MAX_FRAME_SECONDS);
+  const distance = SPEED * (sprinting ? 1.6 : 1) * Math.min(seconds, MAX_FRAME_SECONDS);
   const scale = distance / Math.max(1, magnitude);
   let x = Math.max(bounds.minX + PLAYER_RADIUS,
     Math.min(bounds.maxX - PLAYER_RADIUS, position.x + input.x * scale));
