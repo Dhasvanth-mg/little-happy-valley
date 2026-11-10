@@ -1,0 +1,22 @@
+{
+  "name": "little-happy-valley",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test tests/movement.test.ts",
+    "build": "tsc --noEmit && vite build"
+  },
+  "dependencies": { "three": "0.179.1" },
+  "devDependencies": {
+    "@types/node": "22.14.0",
+    "@types/three": "0.179.0",
+    "eslint": "9.35.0",
+    "typescript": "5.9.2",
+    "typescript-eslint": "8.42.0",
+    "vite": "6.3.6"
+  }
+}
