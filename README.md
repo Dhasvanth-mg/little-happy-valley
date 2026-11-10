@@ -4,7 +4,7 @@
 
 A browser-first, single-player, open-world exploration sandbox inspired by State College, Pennsylvania, and Penn State University Park. The game will use detailed **2.5D isometric pixel art**, a geographically recognizable world, procedurally generated buildings and interiors, and progressive chunk streaming.
 
-> **Status: preproduction only.** This repository currently contains specifications, not a playable game. Do not implement until the owner explicitly authorizes implementation.
+> **Status: P1 synthetic walking proof.** The prototype uses a fictional block while P0 geographic data review remains pending.
 
 ## Project vision
 
@@ -63,4 +63,6 @@ This project does not own the original Reddit map or Google's map imagery. Do no
 
 ## Current state
 
-Documentation prepared for Codex handoff. No application, geographic dataset, 3D model, or asset has been generated yet.
+The P1 prototype uses one synthetic block, a fixed orthographic camera, camera-relative keyboard movement, building collision, and a coordinate readout in local meters. Geographic ingestion still requires the P0 approvals in the roadmap.
+
+With Node.js 22.14 or newer in the 22.x line, run `npm install` and `npm run dev`. Use WASD or the arrow keys to move. Run `npm run lint`, `npm run typecheck`, `npm test`, and `npm run build` to check the prototype.

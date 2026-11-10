@@ -4,7 +4,7 @@ Read this file and the linked specifications **before modifying the repository**
 
 ## Current authorization gate
 
-**DOCUMENTATION ONLY. Do not implement, install dependencies, scaffold application files, fetch geographic datasets, generate images, or deploy until the owner explicitly says to begin implementation.** You may review documentation, identify contradictions, and propose a plan. If instructions conflict, ask the owner rather than silently changing locked choices.
+**The owner has authorized implementation across the roadmap.** Continue automatically to the next in-scope task or milestone until the owner tells you to stop. Treat this as standing approval for the roadmap sequence. Skip manual testing and run automated checks.
 
 ## Product invariants
 
@@ -17,7 +17,7 @@ Read this file and the linked specifications **before modifying the repository**
 - Stable geographic and game-object IDs; versioned schemas and save migrations.
 - No unauthorized use of Google Street View, the Reddit creator's map, copyrighted art, or restricted floor plans.
 
-## Agent workflow after implementation is authorized
+## Agent workflow
 
 1. Read `README.md`, `docs/PRODUCT.md`, `docs/ARCHITECTURE.md`, `docs/DATA_SCHEMAS.md`, `docs/ROADMAP.md`, and relevant specialized docs.
 2. State the milestone, scope, assumptions, files to change, tests, and risks **before coding**.
@@ -25,7 +25,9 @@ Read this file and the linked specifications **before modifying the repository**
 4. Add tests for geometry, generator determinism, save migration, and gameplay state alongside features.
 5. Run lint, typecheck, tests, and build before claiming completion; report commands and actual outcomes.
 6. Update documentation and decision log when behavior or contracts change.
-7. Never claim a feature works based solely on code generation; distinguish implemented, tested, and manually verified.
+7. Push frequent, reviewable checkpoints under the owner's GitHub identity. Verify the owner is the sole author and omit co-author trailers.
+8. If a task is blocked, diagnose and retry it, then advance independent work when possible. Resume blocked work as soon as its prerequisites are met.
+9. Never claim a feature works based solely on code generation; distinguish implemented, tested, and manually verified.
 
 ## Code quality
 

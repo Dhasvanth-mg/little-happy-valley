@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "sourceSnapshotId": "synthetic-footprints-v1",
+  "crs": "synthetic-local-meters",
+  "verticalDatum": "synthetic-local-meters",
+  "origin": { "easting": 1000, "northing": 2000, "elevation": 300 },
+  "footprints": [
+    { "id": "synthetic:shop", "minEasting": 998, "maxEasting": 1002, "minNorthing": 2023, "maxNorthing": 2028 }
+  ]
+}
