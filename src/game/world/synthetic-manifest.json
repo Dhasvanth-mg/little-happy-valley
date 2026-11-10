@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "sourceSnapshotId": "synthetic-footprints-v1",
+  "crs": "synthetic-local-meters",
+  "verticalDatum": "synthetic-local-meters",
+  "origin": {
+    "easting": 1000,
+    "northing": 2000,
+    "elevation": 300
+  },
+  "footprints": [
+    {
+      "id": "synthetic:shop",
+      "minEasting": 998,
+      "maxEasting": 1002,
+      "minNorthing": 2023,
+      "maxNorthing": 2028
+    }
+  ],
+  "chunks": [
+    {
+      "id": "chunk:-1:0",
+      "gridX": -1,
+      "gridY": 0,
+      "buildingIds": [
+        "synthetic:shop"
+      ]
+    },
+    {
+      "id": "chunk:0:0",
+      "gridX": 0,
+      "gridY": 0,
+      "buildingIds": [
+        "synthetic:shop"
+      ]
+    }
+  ],
+  "contentHash": "c6541727b1d7daaa776dfa46bd352ce4679214a0f9fbaaa7d7f01f0643188987"
+}

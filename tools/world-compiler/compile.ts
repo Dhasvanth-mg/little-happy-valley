@@ -47,7 +47,8 @@ try {
     };
   });
   const chunks = compileFootprintChunks(footprints, origin);
-  const manifest = { schemaVersion: 1, sourceSnapshotId, crs, verticalDatum, origin, chunks };
+  footprints.sort((a, b) => a.id < b.id ? -1 : Number(a.id !== b.id));
+  const manifest = { schemaVersion: 1, sourceSnapshotId, crs, verticalDatum, origin, footprints, chunks };
   const contentHash = createHash('sha256').update(JSON.stringify(manifest)).digest('hex');
   console.log(JSON.stringify({ ...manifest, contentHash }, null, 2));
 } catch (error) {

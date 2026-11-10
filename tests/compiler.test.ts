@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
+import { compiledBuildings } from '../src/game/world/compiledBuildings.ts';
 import test from 'node:test';
 
 const args = [
@@ -20,7 +22,12 @@ test('the compiler emits a repeatable manifest for the synthetic snapshot', () =
   const { contentHash, chunks, sourceSnapshotId } = JSON.parse(first.stdout);
   assert.match(contentHash, /^[a-f0-9]{64}$/);
   assert.equal(sourceSnapshotId, 'synthetic-footprints-v1');
-  assert.deepEqual(chunks.map(({ id }: { id: string }) => id), ['chunk:0:0', 'chunk:1:0']);
+  assert.deepEqual(chunks.map(({ id }: { id: string }) => id), ['chunk:-1:0', 'chunk:0:0']);
+  const bundled = JSON.parse(readFileSync('src/game/world/synthetic-manifest.json', 'utf8'));
+  assert.deepEqual(bundled, JSON.parse(first.stdout));
+  assert.deepEqual(compiledBuildings(bundled).map(({ bounds }) => bounds), [
+    { minX: -2, maxX: 2, minZ: -28, maxZ: -23 },
+  ]);
 });
 
 test('the compiler rejects invalid snapshot metadata without emitting JSON', () => {

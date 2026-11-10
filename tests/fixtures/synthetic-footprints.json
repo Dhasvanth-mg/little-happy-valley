@@ -5,6 +5,6 @@
   "verticalDatum": "synthetic-local-meters",
   "origin": { "easting": 1000, "northing": 2000, "elevation": 300 },
   "footprints": [
-    { "id": "synthetic:shop", "minEasting": 1120, "maxEasting": 1132, "minNorthing": 2020, "maxNorthing": 2030 }
+    { "id": "synthetic:shop", "minEasting": 998, "maxEasting": 1002, "minNorthing": 2023, "maxNorthing": 2028 }
   ]
 }
