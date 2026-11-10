@@ -8,10 +8,12 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test tests/movement.test.ts",
+    "test:browser": "playwright test",
     "build": "tsc --noEmit && vite build"
   },
   "dependencies": { "three": "0.179.1" },
   "devDependencies": {
+    "@playwright/test": "1.55.0",
     "@types/node": "22.14.0",
     "@types/three": "0.179.0",
     "eslint": "9.35.0",
