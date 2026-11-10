@@ -7,7 +7,7 @@
     "dev": "vite",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test tests/movement.test.ts",
+    "test": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test tests/movement.test.ts tests/coordinates.test.ts",
     "test:browser": "playwright test",
     "build": "tsc --noEmit && vite build"
   },
