@@ -43,7 +43,7 @@ export function compileFootprintChunks(
     const max = toScenePosition({ easting: maxEasting, northing: maxNorthing, elevation: origin.elevation }, origin);
     const firstX = Math.floor(min.x / CHUNK_SIZE);
     const lastX = Math.ceil(max.x / CHUNK_SIZE) - 1;
-    const firstY = Math.floor(-min.z / CHUNK_SIZE);
+    const firstY = Math.floor(-min.z / CHUNK_SIZE) + 0;
     const lastY = Math.ceil(-max.z / CHUNK_SIZE) - 1;
     const count = (lastX - firstX + 1) * (lastY - firstY + 1);
     if (![firstX, lastX, firstY, lastY].every(Number.isSafeInteger) ||
